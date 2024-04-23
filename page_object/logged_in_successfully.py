@@ -5,7 +5,7 @@ from page_object.base_page import BasePage
 
 
 class LoggedInSuccessfullyPage(BasePage):
-    _url = "https://practicetestautomation.com/practice-test-login/"
+    _url = "https://practicetestautomation.com/logged-in-successfully/"
     __header_locator = (By.TAG_NAME, "h1")
     __button_locator = (By.LINK_TEXT, "Log out")
 
@@ -16,10 +16,10 @@ class LoggedInSuccessfullyPage(BasePage):
     @property
     def expected_url(self) -> str:
         return self._url
-
-    def get_header(self) -> str:
-        super()._get_text(self.__header_locator)
+    @property
+    def header(self) -> str:
+        return super()._get_text(self.__header_locator)
 
     def is_logout_button_displayed(self) -> bool:
-        super().is_logout_button_displayed(self.__button_locator)
+        return super()._is_displayed(self.__button_locator)
 
